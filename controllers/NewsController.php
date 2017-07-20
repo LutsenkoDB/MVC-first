@@ -15,7 +15,7 @@ class NewsController
         return true;
     }
     
-    public function actionView($category,$id)
+    public function actionView($id)
     {
         //echo 'Wiew single new';
         if($id)
