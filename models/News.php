@@ -1,16 +1,25 @@
 <?php
-include_once ROOT.'/components/db_connect.php';
+include ROOT.'/components/db_connect.php';
 
 class News
 {
     public static function getNewsItemById($id)
     {
-        $result = $db->query("SELECT id, title, date, Short_content".
-                "FROM Publication WHERE id LIKE $id" );
+        $sql= "SELECT id, title, date, Short_content".
+              "FROM Publication WHERE id = '$id'" ;
+        $newsId= $db-> prepare($sql); 
+        $newsId->execute($id);
+        $result= $newsId->fetch(PDO::FETCH_ASSOC);
+        var_dump($result);
+        
     }
     public static function getNewsList()
     {
-        $result = $db->query("SELECT * FROM Publication " );
+        $sqlt= "SELECT * FROM Publication LIMIT 10";
+        $newsList= $db-> prepare($sqlt); 
+        $newsList->execute();
+        $result= $newsList->fetch(PDO::FETCH_ASSOC);
+         var_dump($result);
     }
     
 }

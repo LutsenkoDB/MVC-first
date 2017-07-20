@@ -6,7 +6,7 @@ class NewsController
 {
     public function actionIndex()
     {
-        //echo 'News List';
+       echo 'News List'.'<br>';
         $newsList = array();
         $newsList = News::getNewsList();
         echo '<pre>';
